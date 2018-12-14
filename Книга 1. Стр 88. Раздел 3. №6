@@ -1,0 +1,37 @@
+/* Дан массив nxn, элементы которого целые числа.
+Поменять местами столбцы по правилу: первый с последним,
+второй с предпоследним и т.д. */
+//Книга 1. 3 Раздел. Страница 88. №6
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n; cout << "n="; cin >> n; cout << endl; int el;
+    int **a=new int *[n];
+    for (int i=0; i<n; ++i) a[i]=new int [n];
+    for (int i=0;i<n; ++i)
+    {
+        for (int j=0;j<n; ++j)
+        {
+            cout<<"a["<< i<<"]["<<j<<"]=";
+            cin>>*(*(a+i)+j);
+        }
+    }
+    for ( int i = 0; i < n; ++i)
+    {
+        for (int j=0; j<n/2; ++j)
+        {
+            el=a[i][j]; 
+            a[i][j]=a[i][n-1-j]; 
+            a[i][n-1-j]=el;
+        }
+    }
+    // Выводим массив
+    for (int i=0;i<n; ++i, cout<<endl)
+    for (int j=0;j<n; ++j)
+    cout<<"a["<<i<<"]["<<j <<"]="<<*(*(a+i)+j)<< "\t";
+    return 0;
+}
