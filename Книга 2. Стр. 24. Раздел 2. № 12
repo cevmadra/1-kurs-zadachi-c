@@ -1,0 +1,21 @@
+/*Даны целые положительные числа N1 и N2 и строки S1 и S2. Получить из этих строк новую строку,
+содержащую первые N1 символов строки S1 и последние N2 символов строки S2. (В указанном порядке)*/
+#include <iostream>
+#include <string>
+#include <cstring>
+ 
+using namespace std;
+ 
+int main()
+{
+    string s1,s2,s; int n1, n2,k;
+    cout << "N1=" ; cin >> n1;
+    cout << "N2=" ; cin >> n2;
+    cout << "S1=" ; cin >> s1;
+    cout << "S2=" ; cin >> s2;
+    s=s1.substr(0,n1);
+    k=s2.size(); k=k-n2;
+    s+=s2.substr(k,n2);
+    cout <<s<<endl;
+    return 0;
+}
