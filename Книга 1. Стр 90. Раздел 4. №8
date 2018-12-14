@@ -1,0 +1,39 @@
+/* Дан массив размерностью nxn. Для каждого столбца
+подсчитать сумму четных положительных элементов и записать данные
+в новый массив
+Книга 1. 4 раздел. страница 90 №8 */
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n; cout << "n="; cin >> n; cout << endl; 
+    int **a=new int *[n];
+    for (int i=0; i<n; ++i) a[i]=new int [n];
+    for (int i=0;i<n; ++i)
+    {
+        for (int j=0;j<n; ++j)
+        {
+            cout<<"a["<< i<<"]["<<j<<"]=";
+            cin>>*(*(a+i)+j);
+        }
+    }
+    int *s=new int [n];
+   int k;
+   for (int j=0;j<n;++j)
+   {
+       k=0; s[j]=0;
+       for (int i=0; i<n; ++i)
+       {
+           if (a[i][j]%2==0&&a[i][j]>0)
+           {
+               k++; s[j]+=a[i][j];
+           }
+       }
+       cout<<"s["<<j<<"]="<<s[j]<<"\t";
+   }
+    return 0;
+}
