@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <cstring>
+
+using namespace std;
+
+int main()
+{
+    string s,d; char c;
+    string::size_type k=0,pos=0;
+    getline(cin,s);
+    k=s.find(" ",pos);
+    while (k!=string::npos)
+    {
+        c=s[pos];
+        d=toupper(c);
+        s.replace(pos,1,d);
+        k=s.find(" ",pos);
+        pos=k+1;
+    }
+    cout <<"string=" << s << endl;
+    return 0;
+}
