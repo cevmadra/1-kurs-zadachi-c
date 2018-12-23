@@ -1,0 +1,22 @@
+/* Дан текстовый файл. Переписать в новый файл все его строки,
+вставив в конец каждой строки её номер.
+Стр 55. 1 раздел №16 */
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+    ifstream in ("input.txt"); // запись исходного файла в переменную
+    if (!in) { cout <<"Oshibka 4tenia faila";} // вывод ошибки, если файл не найден
+    ofstream out ("output.txt"); // создание выходного файла
+    string s; int a=1;
+    while (in.peek()!= EOF) {
+        getline (in, s); out << s <<'\t'<< a++ << endl;
+    }
+
+
+    return 0;
+}
