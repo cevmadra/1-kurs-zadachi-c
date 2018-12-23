@@ -27,8 +27,8 @@ using namespace std;
 int main()
 {
     vedom st[50];
-    int num, i,j,n=0;
-    if (!in) { cout <<"Oshibka 4tenia faila";} // вывод ошибки, если файл не найден
+    int i,j,n=0;
+    if (!in) { cout << "Oshibka 4tenia faila";} // вывод ошибки, если файл не найден
         else {
             while (in.peek()!= EOF){
                 in >> st[n].fam;
@@ -41,20 +41,17 @@ int main()
                 in >> st[n].d;
                 in >> st[n].f;
                 st[n].show(); n++;
-            }
-            if(!out) { cout <<"Oshibka 4tenia faila";}
-                else{
-                    j=0;
-                    for(i=0;i<n && !j ; ++i ){
-                        if((st[i].a!=2)&&(st[i].b!=2)&&(st[i].c!=2)&&(st[i].d!=2)&&(st[i].f!=2)){
-                            for(j=i;j<n-1;++j) {st[j]=st[j+1]; n--;}
-                        }
-                            for (i=0;i<n;i++) st[i].output();
-                    }
+            }}
+       if(!out) { cout <<"Oshibka 4tenia faila";}
+            else{
+                j=0;
+                for(i=0;i<n; ++i ){
+                if((st[i].a==2)||(st[i].b==2)||(st[i].c==2)||(st[i].d==2)||(st[i].f==2)){
+                        st[i].output();}
+                    else {continue;}
                 }
-
-        }
+            }
     in.close ();
     out.close ();
-    return 0;
+return 0;
 }
