@@ -1,0 +1,60 @@
+/* На основе данных входного файла составить список студентов, включающий
+фамилию, факультет, курс, группу, 5 оценок. Вывести в новый файл
+информацию о тех студентах, которые имеют хотя бы одну двойку.
+Стр 66. 2 раздел. №18*/
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+    ifstream in ("input.txt"); // запись исходного файла в переменную
+    ofstream out ("output.txt"); // создание выходного файла
+    struct vedom {
+        int kurs, grupp, a,b,c,d,f;
+        string fam, fak;
+        void show();
+        void output ();
+    };
+    void vedom::show(){
+        cout<<setw(10)<<'\t'<<fam<<setw(10)<<'\t'<<fak<<setw(10)<<'\t'<<kurs<<setw(10)<<'\t'<<grupp<<setw(2)<<'\t'<<a<<setw(2)<<'\t'<<b<<setw(2)<<'\t'<<c<<setw(2)<<'\t'<<d<<setw(2)<<'\t'<<f<<endl;
+    }
+    void vedom::output(){
+        out<<setw(10)<<'\t'<<fam<<setw(10)<<'\t'<<fak<<setw(10)<<'\t'<<kurs<<setw(10)<<'\t'<<grupp<<setw(2)<<'\t'<<a<<setw(2)<<'\t'<<b<<setw(2)<<'\t'<<c<<setw(2)<<'\t'<<d<<setw(2)<<'\t'<<f<<endl;
+    }
+
+int main()
+{
+    vedom st[50];
+    int num, i,j,n=0;
+    if (!in) { cout <<"Oshibka 4tenia faila";} // вывод ошибки, если файл не найден
+        else {
+            while (in.peek()!= EOF){
+                in >> st[n].fam;
+                in >> st[n].fak;
+                in >> st[n].kurs;
+                in >> st[n].grupp;
+                in >> st[n].a;
+                in >> st[n].b;
+                in >> st[n].c;
+                in >> st[n].d;
+                in >> st[n].f;
+                st[n].show(); n++;
+            }
+            if(!out) { cout <<"Oshibka 4tenia faila";}
+                else{
+                    j=0;
+                    for(i=0;i<n && !j ; ++i ){
+                        if((st[i].a!=2)&&(st[i].b!=2)&&(st[i].c!=2)&&(st[i].d!=2)&&(st[i].f!=2)){
+                            for(j=i;j<n-1;++j) {st[j]=st[j+1]; n--;}
+                        }
+                            for (i=0;i<n;i++) st[i].output();
+                    }
+                }
+
+        }
+    in.close ();
+    out.close ();
+    return 0;
+}
