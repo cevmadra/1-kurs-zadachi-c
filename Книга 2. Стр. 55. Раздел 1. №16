@@ -14,9 +14,10 @@ int main()
     ofstream out ("output.txt"); // создание выходного файла
     string s; int a=1;
     while (in.peek()!= EOF) {
-        getline (in, s); out << s <<'\t'<< a++ << endl;
+        getline (in, s); out << s <<' '<< a++ << endl;
     }
 
 
     return 0;
 }
+
