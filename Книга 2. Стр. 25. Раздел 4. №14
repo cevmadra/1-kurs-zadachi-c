@@ -1,19 +1,27 @@
-// Дан текст, содержащий целые числа. 
+// Дан текст, содержащий целые числа.
 // Вывести на экран все имеющиеся в нем числа.
-
 #include <iostream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
 int main()
 {
-    string s; unsigned int k = 0;
+    string s,s2; unsigned int k = 0;
     getline(cin,s); // Ввод строки в стиле string
     while (k<s.length()) {
-        if (isdigit(s[k])==0){ s.erase(k,1);}
-            else k++;
-    }
-    cout << s << endl;
+        while (k<s.length()&&isdigit(s[k]))
+        {
+            s2+=s[k]; k++;
+        }
+        if (k>0&&isdigit(s[k-1]))
+        {
+            cout << s2 << " ";
+            s2="";
+        }
+        k++;
+            }
+
     return 0;
 }
