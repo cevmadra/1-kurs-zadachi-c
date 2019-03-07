@@ -11,9 +11,18 @@ https://vk.com/doc195007329_482118935
 
 using namespace std;
 
+unsigned long F(short n) //рекурсивный метод
+{
+    if (n==0 || n==1)
+    return 1;
+    else return n+F(n-1);
+}
 
 int main()
 {
-
+    short n;
+    cout << "n = "; cin >> n ;
+    unsigned long f=F(n); //нерекурсивный вызов функции F
+    cout << n << "!= "<< f << endl;
     return 0;
 }
