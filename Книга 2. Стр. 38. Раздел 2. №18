@@ -1,0 +1,28 @@
+/* Разработать рекурсивную функцию, возвращающую значение:
+для вычисления наибольшего значения в одномерном массиве
+Книга 2. Стр 38. Раздел 2. №18 */
+
+#include <iostream>
+#include <climits>
+
+using namespace std;
+
+float F(float *a, int i){
+    if (i==0) { return a[0];}
+        else {
+            if (a[i] > F(a, i-1)) { return a[i]; }
+                else { return F(a, i-1); }
+        }
+}
+
+int main()
+{
+    int n; cout << "n=" ; cin >> n; cout << endl;
+    float *a =new float[n];
+    for (int i=0; i<n; i++){
+        cout <<"a["<<i<<"]="; cin >> a[i];
+    }
+    cout << F(a,n-1) << endl;
+    return 0;
+}
+
