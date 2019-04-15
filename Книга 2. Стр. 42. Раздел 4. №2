@@ -4,5 +4,50 @@
 Книга 2. Стр. 42. Раздел 4. №2 */
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
+
+float F(float x)
+{
+    if (abs(x)<3)
+        {
+        return sin(x);
+        }
+        else if ( (abs(x)>=3) && (abs(x)<9) )
+        {
+            return ( (sqrt(x*x+1))/(sqrt(x*x+5)) );
+        }
+        else if ( abs(x)>=9 )
+                {
+                     return (sqrt(x*x+1) - sqrt(x*x+5));
+                }
+}
+
+void F (float x, float &y)
+{
+    if (abs(x)<3)
+        {
+        cout << sin(x) ;
+        }
+    else if ((abs(x)>=3) && (abs(x)<9))
+    {
+        cout << (sqrt(x*x+1))/(sqrt(x*x+5));
+    }
+    else if (abs(x)>=9)
+    {
+        cout << (sqrt(x*x+1) - sqrt(x*x+5));
+    }
+}
+
+int main()
+{
+    float x;
+    cout << "x="; cin >> x; cout<< endl;
+    cout << "y=" << F(x) << endl;
+    cout <<"x="; cin >> x; cout <<endl;
+    float y=0;
+    cout <<"y=";
+    F(x,y);
+    return 0;
+}
