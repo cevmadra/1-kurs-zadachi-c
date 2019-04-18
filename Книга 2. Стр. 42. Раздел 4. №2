@@ -28,15 +28,15 @@ void F (float x, float &y)
 {
     if (abs(x)<3)
         {
-        cout << sin(x) ;
+        y= sin(x) ;
         }
     else if ((abs(x)>=3) && (abs(x)<9))
     {
-        cout << (sqrt(x*x+1))/(sqrt(x*x+5));
+        y= (sqrt(x*x+1))/(sqrt(x*x+5));
     }
     else if (abs(x)>=9)
     {
-        cout << (sqrt(x*x+1) - sqrt(x*x+5));
+        y= (sqrt(x*x+1) - sqrt(x*x+5));
     }
 }
 
@@ -45,9 +45,8 @@ int main()
     float x;
     cout << "x="; cin >> x; cout<< endl;
     cout << "y=" << F(x) << endl;
-    cout <<"x="; cin >> x; cout <<endl;
     float y=0;
-    cout <<"y=";
-    F(x,y);
+    F(x,y);  cout <<"y="<< y<<endl ;
     return 0;
 }
+
