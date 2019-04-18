@@ -10,32 +10,57 @@
 using namespace std;
 
 template <typename X>
-X vvod(X &a,int n)
+void vvod(int n, int m, X **a )
 {
-    X **a;
-    a=new X*[n];
-    for(int i=0;i<n;i++)
+    for (int i=0; i<n; ++i)
     {
-        a[i] = new X[n];
-        for (int j=0;j<n;j++)
-        {
-            cout<<"a["<< i<<"]["<<j<<"]=";
-            cin>>a[i][j];
+        for(int j=0; j<m; j++){
+            cout << "a["<<i<<"]["<<j<<"]=";
+            cin >> a[i][j]; cout << endl;
         }
     }
-    return a;
 }
 template <typename X>
-void printArray(X *a, int n)
+void vivod(int n, int m, X **a)
 {
-    for (int i=0;i<n; ++i, cout<<endl)
-    for (int j=0;j<n; ++j)
-    cout<<"a["<<i<<"]["<<j <<"]="<<*(*(a+i)+j)<< "\t";
+    for (int i=0; i<n; i++){
+        for (int j=0; j<m; j++){
+            cout << a[i][j] <<'\t';
+        }
+        cout << endl;
+    }
+}
+template <typename X>
+void F(int n, int m, X **a){
+    X l;
+    cout << "Vvedite nujnoe 4islo"<< endl;
+    cin >> l;
+    for (int i=0; i<n; i++){
+        for (int j=0; j<m; j++){
+            if (a[i][j]<l){
+                a[i][j]*=2;
+            }
+        }
+    }
 }
 int main()
 {
     int n; cout << "n="; cin >> n; cout << endl;
-    vvod (a,n);
-    printArray(a,n)
+    int m; cout << "m="; cin >> m; cout << endl;
+    int **a = new int *[n];
+    for (int i=0; i<n; ++i){
+        a[i]=new int[m];
+    }
+    vvod (n,m,a);
+    F(n,m,a);
+    vivod(n,m,a);
+    float **b = new float *[n];
+    for (int i=0; i<n; ++i){
+        b[i]= new float [m];
+    }
+    vvod (n,m,b);
+    F(n,m,b);
+    vivod(n,m,b);
     return 0;
 }
+
