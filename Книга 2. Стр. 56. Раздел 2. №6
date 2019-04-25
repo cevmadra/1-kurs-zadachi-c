@@ -1,0 +1,32 @@
+/* Даны два файла с числами. Получить новый файл, записав в него сначала все
+четные числа из первого файла, потом все нечетные числа из второго.
+Книга 2. Стр. 56. Раздел 2. №6*/
+#include <fstream>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    ifstream in1 ("input1.txt");
+    ifstream in2 ("input2.txt");
+    ofstream out ("output.txt");
+    if (!in1) { cout << "Oshibka 4tenia faila 1" << endl;}
+    if (!in2) { cout << "Oshibka 4tenia faila 2" << endl;}
+    int x;
+    while (in1.peek()!= EOF)
+    {
+        in1>>x;
+        if (x%2==0) { out << x << endl;}
+    }
+        while (in2.peek()!= EOF)
+    {
+        in2>>x;
+        if (!(x%2==0)) { out << x << endl;}
+    }
+    in1.close ();
+    in2.close ();
+    out.close ();
+    return 0;
+}
