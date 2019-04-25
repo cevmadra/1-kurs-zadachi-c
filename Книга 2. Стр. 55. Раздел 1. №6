@@ -1,0 +1,27 @@
+/* Дан текстовый файл. Найти номер самой короткой строки
+Книга 2. Стр. 55. Раздел 1. №6*/
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <climits>
+
+using namespace std;
+
+int main()
+{
+    ifstream in ("input.txt"); // запись исходного файла в переменную
+    if (!in) { cout <<"Oshibka 4tenia faila";} // вывод ошибки, если файл не найден
+    string s; unsigned a,min= INT_MAX,l=0,k;
+    while (in.peek()!= EOF)
+    {
+        getline(in,s); l++;
+        a = s.length();
+        if (a<min){
+        k=l; min=a;
+        }
+
+    }
+    cout << k<<endl;
+    in.close ();
+    return 0;
+}
