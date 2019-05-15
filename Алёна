@@ -1,0 +1,46 @@
+/* На основе данных входного файла составить инвентарную ведомость склада,
+включив следующие данные: вид продукции, стоимость, сорт, количество.
+Вывести в новый файл инвентарную ведомость склада, увеличив стоимость
+каждого вида продукции на х%.
+Книга 2. Стр. 67. Раздел 2. №14 */
+
+#include <iostream>
+#include <cmath>
+#include <fstream>
+
+using namespace std;
+
+struct point {
+    double x, y;
+};
+double dlina (point a, point b){
+    return sqrt(pow(a.x-b.x,2)+ pow (a.y-b.y,2));
+}
+
+int main()
+{
+    double R;
+    int n, k2 = 0, k1 = 0;
+    point circle;
+    cout << "R=" ; cin >> R; cout << endl;
+    cout << "n=" ; cin >> n; cout << endl;
+    ifstream coor ("coordinates.txt");
+    point *points = new point [n];
+    for (int i=0; i<n; i++){
+        coor >> points[i].x;
+        coor >> points[i].y;
+    }
+    for (int i=0; i<n; ++i){
+        for (int j = 0; j < n; ++j){
+            if (points[i].x != points [j].x || points[i].y != points [j].y )
+                if (dlina (points[i],points[j]) <= R) ++k1;
+        }
+        if (k1 < k2) {
+               k2 = k1;
+                    circle = points [i];
+            }
+        k1 = 0;
+    }
+    cout << circle.x << " "<< circle.y;
+    return 0;
+}
