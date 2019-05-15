@@ -1,0 +1,26 @@
+/* Создать файл, состоящий из n вещественных чисел.
+Вывести на экран все числа данного файла, не попадающие в данный диапазон.
+Книга 2. Стр. 57. Раздел 3. №10 */
+
+#include <iostream>
+#include <cmath>
+#include <fstream>
+
+using namespace std;
+
+
+int main()
+{
+    ifstream in ("input.txt");
+    int k;
+    int a,b; // диапазон
+    cout << "a="; cin >> a; cout << endl;
+    cout << "b="; cin >> b; cout << endl;
+    while (in.peek() != EOF){
+        in >> k;
+        if ( (k<= b) && ( k>=a ) ) {
+                cout << k << endl;
+            }
+    }
+    return 0;
+}
