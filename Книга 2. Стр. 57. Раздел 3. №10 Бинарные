@@ -25,10 +25,9 @@ int main()
     ifstream fin ("bin.dat", ios::binary);
     while (fin.peek() != EOF){
         fin.read ((char *)&x, sizeof(x));
-        if (x<a && x>b){
+        if (x<a || x>b){
             cout << x << endl;
         }
-        fin.seekg(sizeof(x), ios::cur);
     }
     fin.close();
     return 0;
