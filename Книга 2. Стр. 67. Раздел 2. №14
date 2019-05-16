@@ -1,0 +1,57 @@
+/* На основе данных входного файла составить инвентарную ведомость игрушек,
+включив следующие данные: название игрушки, ее стоимость (в руб.),
+возрастные границы детей, для которых предназначена игрушка. Вывести в
+новый файл инвентарную ведомость игрушек, уменьшив стоимость каждого вида
+шрушек на х%.
+Книга 2. Стр. 67. Раздел 2. №14 */
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+    ifstream in ("input.txt"); // запись исходного файла в переменную
+    ofstream out ("output.txt"); // создание выходного файла
+    struct vedom {
+        int stoim, vozr1, vozr2;
+        string name;
+        void show();
+        void output ();
+    };
+    void vedom::show(){
+        cout<<setw(10)<<'\t'<<name<<setw(10)<<'\t'<<stoim<<setw(10)<<'\t'<<vozr1<<setw(10)<<'\t'<<vozr2<<endl;
+    }
+    void vedom::output(){
+        out<<setw(10)<<'\t'<<name<<setw(10)<<'\t'<<stoim<<setw(10)<<'\t'<<vozr1<<setw(10)<<'\t'<<vozr2<<endl;
+    }
+
+int main()
+{
+    vedom st[50];
+    int i,n=0;
+    if (!in) { cout << "Oshibka 4tenia faila";} // вывод ошибки, если файл не найден
+        else {
+            while (in.peek()!= EOF){
+                in >> st[n].name;
+                in >> st[n].stoim;
+                in >> st[n].vozr1;
+                in >> st[n].vozr2;
+                st[n].show(); n++;
+            }}
+    int x;
+    cout << "x="; cin >> x; cout << endl;
+    if(!out) { cout <<"Oshibka 4tenia faila";}
+        else
+        {
+            for(i=0; i<n; ++i )
+            {
+                st[i].stoim = (st[i].stoim - (st[i].stoim*x)/100);
+                st[i].output();
+            }
+        }
+    in.close ();
+    out.close ();
+return 0;
+}
