@@ -1,0 +1,31 @@
+/* Дана последовательность целых чисел
+Удалить из массива повторяющиеся элементы, оставив только их первые
+вхождения.
+Книга 2. Стр. 90. Раздел 2. №18 */
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+using namespace std;
+
+
+
+int main()
+{
+    vector <int> iVec;
+    int n,x;
+    cout << "n="; cin >> n; cout << endl; // Ввод размера вектора
+    for (int i=0;i<n;i++){ // Ввод вектора
+        cout<<"x[" << i << "]="; cin >> x;
+        iVec.push_back(x);
+    }
+    for (unsigned int i=0; i<iVec.size(); i++){
+        for (unsigned int j=0; j<iVec.size(); i++){
+            vector <int>::iterator iEnd=remove(j,iVec.end(),iVec[i]);
+            iVec.erase(iEnd,iVec.end());
+        }
+    }
+    return 0;
+}
