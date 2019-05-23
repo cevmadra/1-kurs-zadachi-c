@@ -1,0 +1,40 @@
+/* Дана последовательность целых чисел
+Подсчитать сумму элементов, расположенных между максимальным и
+минимальным элементами (минимальный и максимальный элементы в массиве
+единственные). Если максимальный элемент встречается позже минимального,
+то выдать сообщение об этом.
+Книга 2. Стр. 88. Раздел 1. №16 */
+
+#include <iostream>
+#include <cmath>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+using namespace std;
+
+
+
+int main()
+{
+    vector <int> iVec;
+    int n,x;
+    cout << "n="; cin >> n; cout << endl; // Ввод размера вектора
+    for (int i=1;i<=n;i++){ // Ввод вектора
+        cout<<"x[" << i << "]="; cin >> x;
+        iVec.push_back(x);
+    }
+    vector <int>::iterator iterMin = min_element(iVec.begin(),iVec.end());
+    vector <int>::iterator iterMax = max_element(iVec.begin(),iVec.end());
+    int sum=0;
+    if (iterMin>iterMax) {
+        sum=accumulate(iterMax+1,iterMin,0);
+    }
+        else {
+            cout << "iterMIN < IterMAX" << endl;
+            sum=accumulate(iterMin+1,iterMax,0);
+            }
+    cout << sum;
+    return 0;
+}
