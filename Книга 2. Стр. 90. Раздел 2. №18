@@ -21,11 +21,10 @@ int main()
         cout<<"x[" << i << "]="; cin >> x;
         iVec.push_back(x);
     }
-    for (unsigned int i=0; i<iVec.size(); i++){
-        for (unsigned int j=0; j<iVec.size(); i++){
-            vector <int>::iterator iEnd=remove(j,iVec.end(),iVec[i]);
-            iVec.erase(iEnd,iVec.end());
-        }
+    vector <int>::iterator iter=unique (iVec.begin(),iVec.end());
+    iVec.erase(iter,iVec.end());
+    for (unsigned int i=0;i<iVec.size();i++){
+        cout << iVec[i] << endl;
     }
     return 0;
 }
